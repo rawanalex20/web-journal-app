@@ -1,5 +1,5 @@
 /* API credentials */
-const baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=';
+const baseURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '72265d737e3d151aa7160a92ffc0a15e';
 
 /* eventlistner with function of series of actions*/
@@ -8,20 +8,30 @@ document.getElementById('generate').addEventListener('click', performAction);
 /* perform a chain of get, post requests and update */
 function performAction(){
   const zipCode = document.getElementById('zip').value;
-  getWeather(baseURL, apiKey)
+  if(zipCode == ""){
+    alert('Enter Zip Code');
+  }
+  else{
+  const feeling = document.getElementById('feelings').value;
+  getWeather(baseURL, zipCode, apiKey)
   .then(function(data){
-    postData('/addData',{
-      temperature: data.main.temp,
-      date: new Date(),
-      userResponse: zipCode})
-    .then(updateUI('/getData'));
+    if(data.main == undefined){
+      alert('Invalid Zip Code');
+    }else{
+        postData('/addData',{
+          temperature: data.main.temp,
+          date: new Date(),
+          userResponse: feeling})
+        .then(updateUI('/getData'));
+      }
   })
+}
 }
   
 
 /* get request function for weather data */
-const getWeather = async (baseURL, apiKey)=>{
-  const res = await fetch(baseURL + apiKey)
+const getWeather = async (baseURL, zipCode, apiKey)=>{
+  const res = await fetch(`${baseURL}${zipCode}&appid=${apiKey}&units=metric`)
   try {
     const data = await res.json();
     return data;
@@ -59,9 +69,14 @@ const updateUI = async (url) => {
   try{
     const allData = await request.json();
     const date = new Date();
-    document.getElementById('temp').innerHTML = allData.temperature;
-    document.getElementById('date').innerHTML = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
-    document.getElementById('content').innerHTML = allData.userResponse;
+    document.getElementById('temp').innerHTML = `Temperature: ${allData.temperature}°C`;
+    document.getElementById('date').innerHTML = `Date: ${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
+    if(allData.userResponse != ''){
+      document.getElementById('content').innerHTML = `Feeling: ${allData.userResponse}`;
+    }
+    else{
+      document.getElementById('content').innerHTML = '';
+    }
     console.log('try', allData)
   
   }catch(error){
