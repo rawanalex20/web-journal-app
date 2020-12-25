@@ -5,7 +5,7 @@
 This project creates an asynchronous web app that uses OpenWeatherMap Web API and user data to dynamically update the UI. 
 
 ## Instructions
-server.js file has the configuration of the local server and uses express for post and get routes. It uses the main project folder "website" which contains the required files for client side. app.js sends both get and post requests and update UI dynamicaly according to data from weather api and user input. index.html shows the text areas where user inputs a valid zip code and feeling for the day and js files updates entry area when the user clicks on "generate" area and fetches the data from web api according to zipcode. styles.css contains the styling.
+server.js file has the configuration of the local server and uses express for post and get routes. It uses the main project folder "website" which contains the required files for client side. app.js sends both get and post requests and update UI dynamicaly according to data from weather api and user input. index.html shows the text areas where user inputs a valid Zip Code and feeling for the day and js files updates entry area when the user clicks on "generate" area and fetches the data from web api according to ZIP Code. styles.css contains the styling.
 
 ### Getting started
 You need to run local server with node.js.
