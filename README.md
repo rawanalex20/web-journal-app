@@ -1,11 +1,11 @@
-# Weather Journal App
+# Weather Journal App Project
 12-5-2020
 
 ## Overview
 This project creates an asynchronous web app that uses OpenWeatherMap Web API and user data to dynamically update the UI. 
 
 ## Instructions
-server.js file has the configuration of the local server and uses express for post and get routes. It uses the main project folder "website" which contains the required files for client side. app.js sends both get and post requests and update UI dynamicaly according to data from weather api and user input. index.html shows the text areas where user inputs zip code and feeling for the day and js files updates entry area when the user clicks on "generate" area. styles.css contains the styling.
+server.js file has the configuration of the local server and uses express for post and get routes. It uses the main project folder "website" which contains the required files for client side. app.js sends both get and post requests and update UI dynamicaly according to data from weather api and user input. index.html shows the text areas where user inputs a valid zip code and feeling for the day and js files updates entry area when the user clicks on "generate" area and fetches the data from web api according to zipcode. styles.css contains the styling.
 
 ### Getting started
 You need to run local server with node.js.
@@ -21,7 +21,7 @@ At the path where you installed files run the following command,
 
 `node server.js`
 
-and on run localhost on the specified port. You can listen to a port on your own as long as it is similar to one you will run.
+and on run localhost on the specified port. You can configure server to listen to a port on your own as long as the same port is in the adress path in the browser.
 The console should show this message:
 `server running on port: <port-number>`
 
