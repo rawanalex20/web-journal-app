@@ -21,7 +21,7 @@ At the path where you installed files run the following command,
 
 `node server.js`
 
-and on run localhost on the specified port. You can configure server to listen to a port on your own as long as the same port is in the adress path in the browser.
+and run localhost on the specified port. You can configure server to listen to a port on your own as long as the same port is in the adress path in the browser.
 The console should show this message:
 `server running on port: <port-number>`
 
@@ -29,7 +29,7 @@ The console should show this message:
 Server runs on node.js and uses express package to initiate an instance of an app.
 
 ## API
-The app has the credentials to accessses the open weather api.
+The app has the credentials to access the open weather api.
 You can find more apis here https://openweathermap.org/api.
 
 ## Dependencies
